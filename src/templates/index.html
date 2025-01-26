@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navikam</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./font.css" />
+
+
+    <!-- favicon link start -->
+    <link rel="icon" type="image/png" href="../static/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../static/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../static/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../static/assets/favicon/site.webmanifest" />
+    <!-- favicon link end -->
+
+
+
+</head>
+
+<body>
+
+    <body class="bg-[#030014] text-white font-['Nunito'] ">
+        <section class="flex flex-col justify-between  h-screen">
+            <!-- header section  -->
+            <header class="z-10 flex items-center justify-between w-full px-4 mt-4 max-w-screen-xl mx-auto shadow-lg">
+                <div class="flex items-center justify-center">
+                    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Navikam"
+                        class=" h-[2.5rem] sm:h-[3rem] cursor-pointer" onclick="window.location.href='./index.html'" />
+                </div>
+                <div class="flex md:hidden relative">
+                    <!-- Hamburger Icon -->
+                    <button id="hamburger" class="text-white focus:outline-none">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown Menu for Hamburger -->
+                    <div id="dropdown-menu"
+                        class="absolute right-0 hidden mt-2 w-48 bg-gray-800 rounded-md shadow-lg border-2 border-transparent transition-all duration-500 ease-in-out overflow-hidden max-h-0 top-4">
+                        <div class="border-t-4 border-b-4 border-transparent"
+                            style="border-image: linear-gradient(to right, #6b46c1, #38b2ac) 1;">
+                            <a href="#" data-scroll-to="why"
+                                class="why block px-4 py-2 text-white text-center hover:bg-gray-700 transition duration-300 ease-in-out">Why
+                                LoRa?
+                            </a>
+                            <a href="#"
+                                class=" latestWork  block px-4 py-2 text-white text-center hover:bg-gray-700 transition duration-300 ease-in-out">Explore
+                                LoRa</a>
+                            <a href="#"
+                                class=" contact block px-4 py-2 text-white text-center hover:bg-gray-700 transition duration-300 ease-in-out">DashBoard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <nav id="nav-menu" class=" hidden flex-col md:flex md:flex-row gap-x-20">
+                    <a href="#" data-scroll-to="why" class="why font-extrabold text-xl">Why LoRa?
+                    </a>
+                    <a href="#" data-scroll-to="explore" class=" latestWork text-white font-extrabold text-xl">Explore
+                        LoRa</a>
+                    <button onclick="window.location.href='/dashboard'"
+                        class=" contact text-white font-extrabold text-xl">Dashboard</button>
+                </nav>
+            </header>
+
+            <!-- header section end  -->
+
+
+
+            <!-- Hero section  -->
+            <div class=" w-full absolute inset-0" id="wrapper-canvas"></div>
+
+            <div class="flex flex-col  sm:flex-row sm:mt-10  relative">
+                <div class="w-full flex flex-col sm:flex-row items-start sm:items-center sm:justify-between px-4">
+                    <div class="relative ml-4 md:ml-12 flex-1">
+                        <!-- Button Section -->
+                        <button
+                            class="flex items-center px-6 py-4 my-4 font-medium text-purple-300 bg-transparent border rounded-full border-purple-500 shadow-[rgba(164,143,255,0.12)_0px_-7px_11px_0px_inset] hover:text-purple-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
+                                aria-hidden="true" data-slot="icon" class="text-[#b49bff] mr-[10px] h-5 w-6">
+                                <path fill-rule="evenodd"
+                                    d="M5 4a.75.75 0 0 1 .738.616l.252 1.388A1.25 1.25 0 0 0 6.996 7.01l1.388.252a.75.75 0 0 1 0 1.476l-1.388.252A1.25 1.25 0 0 0 5.99 9.996l-.252 1.388a.75.75 0 0 1-1.476 0L4.01 9.996A1.25 1.25 0 0 0 3.004 8.99l-1.388-.252a.75.75 0 0 1 0-1.476l1.388-.252A1.25 1.25 0 0 0 4.01 6.004l.252-1.388A.75.75 0 0 1 5 4ZM12 1a.75.75 0 0 1 .721.544l.195.682c.118.415.443.74.858.858l.682.195a.75.75 0 0 1 0 1.442l-.682.195a1.25 1.25 0 0 0-.858.858l-.195.682a.75.75 0 0 1-1.442 0l-.195-.682a1.25 1.25 0 0 0-.858-.858l-.682-.195a.75.75 0 0 1 0-1.442l.682-.195a1.25 1.25 0 0 0 .858-.858l.195-.682A.75.75 0 0 1 12 1ZM10 11a.75.75 0 0 1 .728.568.968.968 0 0 0 .704.704.75.75 0 0 1 0 1.456.968.968 0 0 0-.704.704.75.75 0 0 1-1.456 0 .968.968 0 0 0-.704-.704.75.75 0 0 1 0-1.456.968.968 0 0 0 .704-.704A.75.75 0 0 1 10 11Z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <h1>LoRa - Long Range - Navikam</h1>
+                        </button>
+
+                        <!-- Main Title -->
+                        <span class="leading-[1] sm:text-[60px] sm:w-[33rem] text-[32px] font-bold inline-block">
+                            Navikam <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-500">the
+                                best</span> Long-Range IoT
+                        </span>
+
+                        <!-- Description -->
+                        <p
+                            class="pointer-events-none font-['Merriweather'] italic my-4 md:my-8 text-[#9ca3af] w-full md:w-2/3">
+                            LoRa is the de facto wireless platform of Internet of Things (IoT). Semtech's LoRa chipsets
+                            connect sensors to the Cloud and enable real-time communication of data and analytics that
+                            can be utilized to enhance efficiency and productivity. LoRa devices enable smart IoT
+                            applications that solve some of the biggest challenges facing our planet: energy management,
+                            natural resource reduction, pollution control, and infrastructure efficiency.
+                        </p>
+
+                        <!-- Why lora  Button -->
+                        <a href="#" aria-label="Learn more about me">
+                            <button data-scroll-to="why"
+                                class=" why bg-transparent py-2 px-8 rounded font-extrabold hover:scale-110 ease-in-out duration-100 group text-purple-300 border border-purple-500 shadow-[rgba(164,143,255,0.12)_0px_-7px_11px_0px_inset] hover:text-purple-400">
+                                Why LoRa?
+                            </button>
+                        </a>
+                    </div>
+
+                    <!-- Image Section -->
+                    <img src="{{ url_for('static', filename='assets/image/lora.png') }}"
+                        class=" sm:block sm:h-[39rem] md:max-w-md lg:max-w-screen-lg " alt="LoRa" />
+                </div>
+            </div>
+
+            <!-- Hero section  end -->
+
+        </section>
+
+
+        <!-- Navikam Application card section  -->
+        <section id="About" class="sm:px-16 px-6 sm:py-16 py-10 w-full mx-auto relative z-0 bg-red-00">
+            <span class="hash-span">&nbsp;</span>
+            <div class="opacity-100">
+                <p class="sm:text-[18px] text-[14px] text-gray-400 uppercase tracking-wider">
+                    Navikam:-
+                </p>
+                <h2 class="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
+                    Overview :-
+                </h2>
+            </div>
+            <p class="mt-4 text-gray-400 text-[17px] max-w-3xl leading-[30px] opacity-100">
+                the Navikam is designed for various applications, including wildlife monitoring, disaster rescue,
+                security, asset management, and transport logistics. Leveraging the 433MHz frequency, this device aims
+                to overcome limitations associated with traditional cellular and satellite tracking technologies.
+
+
+            </p>
+            <div class="mt-20 flex gap-12 items-center justify-center flex-col md:flex-row">
+                <!-- Card 1 -->
+                <div
+                    class=" card w-[250px] bg-[#0a042b]   rounded-[20px] shadow-lg hover:shadow-xl transition transform  border border-teal-500 cursor-pointer">
+                    <div
+                        class="bg-[#16151d] bg-white rounded-[20px] min-h-[280px] py-5 px-12 flex flex-col justify-evenly items-center drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]">
+                        <img src=" {{ url_for('static', filename='assets/image/tiger tracking.png') }}"
+                            alt="  WildLife Tracking" class="bg-white w-16 h-16 object-contain mb-4" />
+                        <h3 class="text-black text-[20px] font-bold text-center text-xl">
+                            WildLife Tracking
+                        </h3>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class=" card w-[250px] bg-[#0a042b] rounded-[20px] shadow-lg hover:shadow-xl transition transform  border border-teal-500 cursor-pointer">
+                    <div
+                        class="bg-[#16151d] bg-white rounded-[20px] min-h-[280px] py-5 px-12 flex flex-col justify-evenly items-center drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]">
+                        <img src="{{ url_for('static', filename='assets/image/garbage tracking.png') }}"
+                            alt="Garbage Tracking" class="w-16 h-16 object-contain mb-4" />
+                        <h3 class="text-black text-[20px] font-bold text-center text-xl">
+                            Garbage Tracking
+                        </h3>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class=" card w-[250px] bg-[#0a042b] rounded-[20px] shadow-lg hover:shadow-xl transition transform  border border-teal-500 cursor-pointer">
+                    <div
+                        class="bg-[#16151d] bg-white rounded-[20px] min-h-[280px] py-5 px-12 flex flex-col justify-evenly items-center drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]">
+                        <img src=" {{ url_for('static', filename='assets/image/prsonal tracking.png') }} "
+                            alt="Personal Tracking" class="w-16 h-16 object-contain mb-4" />
+                        <h3 class="text-black text-[20px] font-bold text-center text-xl">
+                            Personal Tracking </h3>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class=" card w-[250px] bg-[#0a042b] rounded-[20px] shadow-lg hover:shadow-xl transition transform  border border-teal-500 cursor-pointer">
+                    <div
+                        class="bg-[#16151d] bg-white rounded-[20px] min-h-[280px] py-5 px-12 flex flex-col justify-evenly items-center drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]">
+                        <img src="{{ url_for('static', filename='assets/image/asset tracking.png') }}  "
+                            alt="Asset Tracking" class="w-16 h-16 object-contain mb-4" />
+                        <h3 class="text-black text-[20px] font-bold text-center text-xl">
+                            Asset Tracking </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- introduction card section end  -->
+
+
+
+        <!-- why Lora start  -->
+
+        <section id="why" class="p-6 scroll-mt-3 m-10">
+            <div class="container mx-auto flex flex-col lg:flex-row items-center lg:space-x-8">
+                <!-- Image Section -->
+                <div class="w-full bg-white rounded-md	 lg:w-1/2 flex justify-center">
+                    <img src="{{ url_for('static', filename='assets/image/LoRa_Why_Range.png') }}  "
+                        alt="Why LoRa Graph" class="w-full max-w-md lg:max-w-full">
+                </div>
+
+                <!-- Text Section -->
+                <div class="w-full lg:w-1/2 text-center lg:text-left space-y-4">
+                    <h1 class="text-4xl font-bold text-white ">Why LoRa?</h1>
+                    <p class="text-gray-400 text-lg">
+                        Semtech's LoRa devices, LoRa Basics™ software building blocks, LoRa Cloud™ software solutions,
+                        and the LoRaWAN standard offer an efficient, flexible and economical solution to real-world
+                        problems in rural and indoor use cases, where Cellular, Wi-Fi and Bluetooth Low Energy (BLE)
+                        networks are ineffective.
+                    </p>
+                    <button id="learnMoreButton"
+                        class="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+                        LEARN MORE »
+                    </button>
+                </div>
+            </div>
+        </section>
+        <!-- why Lora end  -->
+
+
+        <!-- Hidden Table  comparison Section -->
+        <section id="comparisonTable" style="overflow: hidden; height: 0; transition: height 0.5s ease;" class="mb-12">
+            <div class="overflow-x-auto">
+                <table
+                    class="table-auto border-collapse border border-gray-300 w-4/5 mx-auto mt-6 text-sm sm:text-base">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-700">
+                            <th class="border border-gray-300 px-4 py-2 text-left">Criteria</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">LoRa</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Satellite</th>
+                            <th class="border border-gray-300 px-4 py-2 text-left">Cellular</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Cost-Effectiveness</td>
+                            <td class="border border-gray-300 px-4 py-2">Low operational cost; no recurring fees; uses
+                                unlicensed frequency bands</td>
+                            <td class="border border-gray-300 px-4 py-2">High equipment and subscription costs</td>
+                            <td class="border border-gray-300 px-4 py-2">Costs for SIM cards, data plans, and operation
+                                fees</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Power Efficiency</td>
+                            <td class="border border-gray-300 px-4 py-2">Extremely low power; devices can run for years
+                                on batteries</td>
+                            <td class="border border-gray-300 px-4 py-2">High power consumption, reducing battery life
+                            </td>
+                            <td class="border border-gray-300 px-4 py-2">Higher power usage; shortens device battery
+                                life</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Range & Remote Coverage</td>
+                            <td class="border border-gray-300 px-4 py-2">Long-range (up to 15–20 km in rural areas);
+                                independent of infrastructure</td>
+                            <td class="border border-gray-300 px-4 py-2">Global coverage but high cost and latency</td>
+                            <td class="border border-gray-300 px-4 py-2">Limited to areas with cellular network
+                                infrastructure</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Scalability</td>
+                            <td class="border border-gray-300 px-4 py-2">Supports dense IoT networks with low bandwidth
+                                requirements</td>
+                            <td class="border border-gray-300 px-4 py-2">Expensive and limited scalability</td>
+                            <td class="border border-gray-300 px-4 py-2">Scalability constrained by cost and spectrum
+                                limitations</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Data Throughput</td>
+                            <td class="border border-gray-300 px-4 py-2">Ideal for low data rate applications like IoT
+                                sensors</td>
+                            <td class="border border-gray-300 px-4 py-2">Excessive and costly for low-data use cases
+                            </td>
+                            <td class="border border-gray-300 px-4 py-2">Designed for high throughput, inefficient for
+                                small IoT packets</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Infrastructure</td>
+                            <td class="border border-gray-300 px-4 py-2">Can operate with private gateways; no
+                                dependency on external networks</td>
+                            <td class="border border-gray-300 px-4 py-2">Requires satellites and external providers</td>
+                            <td class="border border-gray-300 px-4 py-2">Dependent on telecom infrastructure (towers,
+                                base stations)</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Resilience to Interference</td>
+                            <td class="border border-gray-300 px-4 py-2">Resistant to interference using spread spectrum
+                                technology (CSS)</td>
+                            <td class="border border-gray-300 px-4 py-2">Prone to atmospheric and line-of-sight
+                                interference</td>
+                            <td class="border border-gray-300 px-4 py-2">Prone to congestion and interference in urban
+                                areas</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Ease of Deployment</td>
+                            <td class="border border-gray-300 px-4 py-2">Simple setup with private networks</td>
+                            <td class="border border-gray-300 px-4 py-2">Complex and costly; specialized equipment
+                                required</td>
+                            <td class="border border-gray-300 px-4 py-2">Relies on telecom networks and agreements</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-gray-300 px-4 py-2">Privacy & Security</td>
+                            <td class="border border-gray-300 px-4 py-2">Private networks offer full control over data
+                            </td>
+                            <td class="border border-gray-300 px-4 py-2">Data handled by third-party providers, raising
+                                privacy concerns</td>
+                            <td class="border border-gray-300 px-4 py-2">Data exposed to risks from telecom operators
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+
+
+
+
+
+        <!-- use case   -->
+
+        <section id="explore" class="max-w-screen-xl mx-auto px-4 relative pb-8  scroll-mt-10 sm:pb-16">
+            <h2
+                class="text-3xl sm:text-[40px] bg-[#111] relative z-10 font-bold px-4 py-2 w-max mx-auto text-center text-[#1788ae] sm:border-b-2 border-[#1788ae]">
+                Explore LoRa </h2>
+
+
+            <!-- LoRa, an efficient technology for long-range IoT communication -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-8 sm:gap-[80px] items-center sm:mt-20 relative"
+                data-aos="fade-right">
+                <div class="h-[1px] left-1/4 right-1/2 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+                <div
+                    class="w-4 h-4 rounded-full border-[3px] border-[#459bd5] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+                </div>
+                <a href="#" target="_blank" class="flex w-full relative justify-center sm:justify-start">
+                    <div class="flex flex-col items-center relative group sm: ease-in-out duration-200">
+                        <img class="max-w-[400px] w-full rounded-2xl h-96 mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+                            src="https://lora-alliance.org/wp-content/uploads/2023/10/home-story-panel-01-1.png"
+                            alt="Standard" />
+                        <span
+                            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#459bd5] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Standard
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-external-link">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <div class="w-full">
+                    <h3 class="text-[#459bd5] font-bold text-2xl md:text-4xl">
+                        Standard
+                    </h3>
+                    <span class="text-[#459bd5] text-base md:text-lg">(LoRa, an efficient technology for long-range IoT
+                        communication
+
+                        )</span>
+                    <p class="text-justify text-sm md:text-base mt-2">
+                        LoRa enables IoT devices to communicate over long distances with low power consumption, making
+                        it ideal for applications like GPS tracking. Its flexibility encourages innovation and
+                        collaboration among developers while supporting diverse implementations. With seamless
+                        integration capabilities, LoRa provides a scalable and reliable foundation for future-proof IoT
+                        solutions
+                    </p>
+
+
+                </div>
+            </div>
+
+
+            <!-- Efficiency -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative"
+                data-aos="fade-left">
+                <div class="order-2 sm:order-1 w-full">
+                    <h3 class="text-[#ffe578] font-bold text-2xl md:text-4xl">
+                        Efficiency
+                    </h3>
+                    <span class="text-[#ffe578] text-base md:text-lg">(LoRa, an affordable and efficient solution for
+                        long-range IoT communication
+
+                        )</span>
+                    <p class="text-justify text-sm md:text-base mt-2">
+                        LoRa is a cost-effective choice due to its efficient use of resources and minimal infrastructure
+                        requirements. Operating on unlicensed and free ISM bands, LoRa enables long-range communication
+                        without the need for expensive network infrastructure. With energy-efficient LoRa devices, it’s
+                        easy to deploy large-scale LoRa networks, making it an affordable solution for various IoT
+                        applications.
+
+
+                    </p>
+
+
+                </div>
+                <div class="h-[1px] left-1/2 right-1/4 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+                <div
+                    class="w-4 h-4 rounded-full border-[3px] border-[#ffe578] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+                </div>
+                <a href="#" target="_blank"
+                    class="order-1 sm:order-2 flex w-full relative justify-center sm:justify-start">
+                    <div
+                        class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200 sm:ml-auto">
+                        <img class="max-w-[400px] w-full rounded-2xl h-96				 relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+                            src="https://lora-alliance.org/wp-content/uploads/2023/10/home-story-panel-02-1.png"
+                            alt=" " />
+                        <span
+                            class="flex group-hover:-top-14 ease-jump duration-200 text-black bg-[#ffe578] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">
+                            Efficiency
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-external-link">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Security in LoRa-based IoT communication-->
+            <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative"
+                data-aos="fade-right">
+                <div class="h-[1px] left-1/4 right-1/2 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+
+                <div
+                    class="w-4 h-4 rounded-full border-[3px] border-[#fc815c] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+                </div>
+                <a href="#" target="_blank" class="flex w-full relative justify-center sm:justify-start">
+                    <div
+                        class="flex flex-col items-center relative group hover:scale-105 ease-in-out sm:mr-auto duration-200">
+                        <img class="max-w-[400px] w-full rounded-2xl h-96 mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+                            src="https://lora-alliance.org/wp-content/uploads/2023/10/home-story-panel-03-1.png"
+                            alt="" />
+                        <span
+                            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#fc815c] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Security
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-external-link">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <div class="w-full">
+                    <h3 class="text-[#fc815c] font-bold text-2xl md:text-4xl">
+                        Security
+                    </h3>
+                    <span class="text-[#fc815c] text-base md:text-lg">(Security in LoRa-based IoT communication
+
+
+                        )</span>
+                    <p class="text-justify text-sm md:text-base mt-2">
+
+
+                        Since its inception, LoRa has prioritized secure communication for IoT devices. While LoRa
+                        itself provides secure data transmission through robust encryption mechanisms, implementing best
+                        practices for key management and data integrity further enhances protection. By adhering to
+                        security guidelines, you can safeguard sensitive information and ensure the reliability of your
+                        LoRa-based network.
+                    </p>
+
+
+                </div>
+            </div>
+
+            <!-- Flexible network options with LoRa for IoT solutions -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative"
+                data-aos="fade-left">
+                <div class="order-2 sm:order-1 w-full">
+                    <h3 class="text-[#47afa1] font-bold text-2xl md:text-4xl">
+                        Flexibility
+                    </h3>
+                    <span class="text-[#47afa1] text-base md:text-lg">(Flexible network options with LoRa for IoT
+                        solutions
+
+                        )</span>
+                    <p class="text-justify text-sm md:text-base mt-2">
+                        LoRa technology provides businesses with the flexibility to choose the best network
+                        configuration for their IoT applications. Whether deploying a private, public, or hybrid
+                        network, LoRa supports various use cases and locations, allowing for adaptable and scalable
+                        solutions that meet specific needs.
+                    </p>
+
+
+                </div>
+                <div class="h-[1px] left-1/2 right-1/4 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+                <div
+                    class="w-4 h-4 rounded-full border-[3px] border-[#47afa1] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+                </div>
+                <a href="#" target="_blank"
+                    class="order-1 sm:order-2 flex w-full relative justify-center sm:justify-start">
+                    <div
+                        class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200 sm:ml-auto">
+                        <img class="max-w-[400px] w-full rounded-2xl h-96 relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+                            src="https://lora-alliance.org/wp-content/uploads/2023/10/home-story-panel-04-1.png"
+                            alt="" />
+                        <span
+                            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#47afa1] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Flexibility
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-external-link">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Range  -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative"
+                data-aos="fade-right">
+                <div class="h-[1px] left-1/4 right-1/2 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+                <div
+                    class="w-4 h-4 rounded-full border-[3px] border-[#fc815c] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+                </div>
+                <a href="#" target="_blank" class="flex w-full relative justify-center sm:justify-start">
+                    <div
+                        class="flex flex-col items-center relative group hover:scale-105 ease-in-out sm:mr-auto duration-200">
+                        <img class="max-w-[400px] w-full rounded-2xl h-96 mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+                            src="https://lora-alliance.org/wp-content/uploads/2023/10/home-story-panel-05-1.png"
+                            alt="" />
+                        <span
+                            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#fc815c] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">
+                            Range
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-external-link">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <div class="w-full">
+                    <h3 class="text-[#fc815c] font-bold text-2xl md:text-4xl">
+                        Range
+                    </h3>
+                    <span class="text-[#fc815c] text-base md:text-lg">(LoRa: The IoT solution for long-range and remote
+                        area coverage)
+                    </span>
+                    <p class="text-justify text-sm md:text-base mt-2">
+                        LoRa technology offers exceptional long-range coverage, enabling seamless data transmission over
+                        vast distances. This makes it an ideal solution for applications requiring extensive coverage in
+                        remote areas where other connectivity technologies may not reach. With LoRa, you can deploy IoT
+                        devices in locations that would otherwise be difficult to connect, ensuring reliable
+                        communication over long distances.
+                    </p>
+
+
+                </div>
+            </div>
+
+
+
+
+            <!-- Power (LoRa: Long battery life with low power consumption) -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative"
+                data-aos="fade-left">
+                <div class="order-2 sm:order-1 w-full">
+                    <h3 class="text-[#47afa1] font-bold text-2xl md:text-4xl">
+                        Power
+                    </h3>
+                    <span class="text-[#47afa1] text-base md:text-lg"> (LoRa: Long battery life with low power
+                        consumption)
+
+
+                    </span>
+                    <p class="text-justify text-sm md:text-base mt-2">
+                        LoRa technology enables efficient communication with minimal power usage, ensuring prolonged
+                        device battery life. With LoRa, devices can operate for years without frequent battery changes,
+                        making it an ideal solution for remote and hard-to-reach locations where power efficiency is
+                        crucial.
+                    </p>
+
+
+                </div>
+                <div class="h-[1px] left-1/2 right-1/4 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+                <div
+                    class="w-4 h-4 rounded-full border-[3px] border-[#47afa1] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+                </div>
+                <a href="#" target="_blank"
+                    class="order-1 sm:order-2 flex w-full relative justify-center sm:justify-start">
+                    <div
+                        class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200 sm:ml-auto">
+                        <img class="max-w-[400px] w-full relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)] rounded-2xl h-96"
+                            src="https://lora-alliance.org/wp-content/uploads/2023/10/home-story-panel-06-1.png"
+                            alt="" />
+                        <span
+                            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#47afa1] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Power
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-external-link">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+
+            <!-- Penetration  -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative"
+                data-aos="fade-right">
+                <div class="h-[1px] left-1/4 right-1/2 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+                <div
+                    class="w-4 h-4 rounded-full border-[3px] border-[#fc815c] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+                </div>
+                <a href="#" target="_blank" class="flex w-full relative justify-center sm:justify-start">
+                    <div
+                        class="flex flex-col items-center relative group hover:scale-105 ease-in-out sm:mr-auto duration-200">
+                        <img class="max-w-[400px] w-full rounded-2xl h-96 mr-auto relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+                            src="https://lora-alliance.org/wp-content/uploads/2023/10/home-story-panel-07-1.png"
+                            alt="" />
+                        <span
+                            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#fc815c] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Penetration
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-external-link">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+
+                <div class="w-full">
+                    <h3 class="text-[#fc815c] font-bold text-2xl md:text-4xl">
+                        Penetration
+                    </h3>
+                    <span class="text-[#fc815c] text-base md:text-lg">(LoRa: Reliable coverage in challenging
+                        environments
+
+                        )
+                    </span>
+                    <p class="text-justify text-sm md:text-base mt-2">
+                        LoRa technology offers reliable indoor and underground penetration, enabling communication in
+                        environments where traditional connectivity struggles. Whether it's energy meters, control
+                        modules in elevator shafts, or sensors in basement parking areas, LoRa ensures strong,
+                        dependable signals even in dense or obstructed environments.
+                    </p>
+
+
+                </div>
+            </div>
+
+
+            <!-- Advancement -->
+            <div class="flex flex-col sm:flex-row gap-4 mt-12 sm:gap-[80px] items-center sm:mt-20 relative"
+                data-aos="fade-left">
+                <div class="order-2 sm:order-1 w-full">
+                    <h3 class="text-[#47afa1] font-bold text-2xl md:text-4xl">
+                        Advancement
+                    </h3>
+                    <span class="text-[#47afa1] text-base md:text-lg"> (LoRa: Evolving to meet IoT needs with new
+                        features)
+                    </span>
+                    <p class="text-justify text-sm md:text-base mt-2">
+                        LoRa technology is continuously evolving to meet the growing demands of the IoT industry. With
+                        advancements in features like improved range, lower power consumption, and enhanced
+                        communication capabilities, LoRa is becoming even more user-friendly and scalable. Ongoing
+                        developments ensure that LoRa remains at the forefront of reliable, long-range IoT solutions
+                    </p>
+
+
+                </div>
+                <div class="h-[1px] left-1/2 right-1/4 bg-[#1788ae] absolute top-1/2 hidden sm:block"></div>
+                <div
+                    class="w-4 h-4 rounded-full border-[3px] border-[#47afa1] absolute left-1/2 -translate-x-1/2 bg-[#111] z-10 hover:scale-110 ease-in-out duration-100 hidden sm:block">
+                </div>
+                <a href="#" target="_blank"
+                    class="order-1 sm:order-2 flex w-full relative justify-center sm:justify-start">
+                    <div
+                        class="flex flex-col items-center relative group sm:hover:scale-105 ease-in-out duration-200 sm:ml-auto">
+                        <img class="max-w-[400px] w-full rounded-2xl h-96	 relative z-10 drop-shadow-[0_0px_60px_rgba(59,130,246,0.6)]"
+                            src="https://lora-alliance.org/wp-content/uploads/2023/10/home-story-panel-08-1.png"
+                            alt="" />
+                        <span
+                            class="flex group-hover:-top-14 ease-jump duration-200 bg-[#47afa1] sm:absolute left-1/2 sm:-translate-x-1/2 top-5 px-2 py-1 text-sm sm:text-base mt-2 rounded w-max items-center gap-1 after:hidden sm:after:block after:w-4 after:h-4 after:bg-inherit after:absolute after:left-1/2 after:-translate-x-1/2 after:rotate-45 after:-bottom-2">Advancement
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-external-link">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="w-[2px] hidden sm:block bg-[#1788ae]  absolute top-0 bottom-0 left-1/2 -translate-x-1/2">
+            </div>
+
+        </section>
+        <!-- use end   -->
+
+        <script src="../static/vanilla-tilt.js"></script>
+
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script src="../static/app.js"></script>
+
+    </body>
+
+</html>

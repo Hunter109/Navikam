@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navikam GPS Tracker Dashboard</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <!-- Custom Font -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- External CSS -->
+    <!-- <link rel="stylesheet" href="../static/styles.css"> -->
+
+
+    <!-- favicon link start -->
+    <link rel="icon" type="image/png" href="../static/assets/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="../static/assets/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="../static/assets/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/assets/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="../static/assets/favicon/site.webmanifest" />
+    <!-- favicon link end -->
+
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="">
+            </div>
+            <ul class="list-unstyled components">
+                <li><a href="{{ url_for('index') }}" id="menuHome">Home</a></li>
+                <li><a href="#" id="menuClear">Clear Path</a></li>
+                <li><a href="#" id="menuSettings">Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div id="content">
+            <header>
+                <div class="header-bar">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <span>&#9776;</span>
+                    </button>
+                    <img src="{{ url_for('static', filename='assets/navikam_logo.png') }}" alt="">
+                </div>
+            </header>
+
+            <!-- Controls -->
+            <div class="controls">
+                <div id="info">
+                    <p><strong>Latest Location:</strong></p>
+                    <p id="latLon">Latitude: <span id="latitude">-</span>, Longitude: <span id="longitude">-</span></p>
+                </div>
+            </div>
+
+            <!-- Map Section -->
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initializing the map
+        var map = L.map('map', {
+            center: [0, 0],
+            zoom: 13,
+            zoomControl: true
+        });
+
+        // Adding OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Marker and Polyline layers
+        var marker = L.marker([0, 0], { draggable: true }).addTo(map)
+            .bindPopup('Latitude: 0<br>Longitude: 0')
+            .openPopup();
+        var polyline = L.polyline([], { color: 'blue', weight: 5 }).addTo(map);
+
+        // Function to update map and path
+        function updateMap(lat, lon) {
+            var newLatLng = [lat, lon];
+            marker.setLatLng(newLatLng);
+            marker.setPopupContent('Latitude: ' + lat + '<br>Longitude: ' + lon);
+            var latLngs = polyline.getLatLngs();
+            latLngs.push(newLatLng);
+            polyline.setLatLngs(latLngs);
+            document.getElementById('latitude').textContent = lat;
+            document.getElementById('longitude').textContent = lon;
+        }
+
+        // Fetch latest GPS data
+        function fetchData() {
+            fetch('/get-latest-data')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.lat && data.lon) {
+                        updateMap(data.lat, data.lon);
+                    }
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Clear path on button click
+        document.getElementById('menuClear').addEventListener('clic k', function () {
+            polyline.setLatLngs([]); // Clear the polyline
+        });
+
+        // Sidebar toggle
+        document.getElementById('sidebarCollapse').addEventListener('click', function () {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
+
+        // Fetch data initially
+        fetchData();
+
+        // Fetch data every 10 seconds
+        setInterval(fetchData, 500); // Every 10 seconds
+
+    </script>
+</body>
+
+</html>
