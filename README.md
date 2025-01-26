@@ -68,12 +68,10 @@ The **Navikam** is designed for various applications, including wildlife monitor
   <tr>
     <td><img src="./Assets/Lora_Repeater.png" alt="Image 1" width="200"></td>
     <td><img src="./Assets/Lora_Transmitter.png" alt="Image 2" width="200"></td>
-    <td><img src="./Assets/3.jpg" alt="Image 3" width="200"></td>
   </tr>
   <tr>
-    <td><img src="./IOT_Designs/equipment pictures/2024-12-19 10.50.26 PM.jpg" alt="Image 4" width="200"></td>
-    <td><img src="./IOT_Designs/equipment pictures/photo_2024-12-18_22-19-02.jpg" alt="Image 5" width="200"></td>
-    <td><img src="./IOT_Designs/equipment pictures/photo_2024-12-18_22-19-58.jpg" alt="Image 6" width="200"></td>
+    <td><img src="./Assets/Landing.png" alt="Image 1" width="200"></td>
+    <td><img src="./Assets/Dashboard.png" alt="Image 2" width="200"></td>
   </tr>
 </table>
 ---
