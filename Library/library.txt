@@ -1,0 +1,2 @@
+This library folder contains the necessary C programming library files to setup for this 
+project specially for the modules to flash the program inside the hardware device.
