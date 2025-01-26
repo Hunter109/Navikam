@@ -66,9 +66,9 @@ The **Navikam** is designed for various applications, including wildlife monitor
 
 <table>
   <tr>
-    <td><img src="./IOT_Designs/equipment pictures/1.jpg" alt="Image 1" width="200"></td>
-    <td><img src="./IOT_Designs/equipment pictures/2.jpg" alt="Image 2" width="200"></td>
-    <td><img src="./IOT_Designs/equipment pictures/3.jpg" alt="Image 3" width="200"></td>
+    <td><img src="./Assets/1.jpg" alt="Image 1" width="200"></td>
+    <td><img src="./Assets/2.jpg" alt="Image 2" width="200"></td>
+    <td><img src="./Assets/3.jpg" alt="Image 3" width="200"></td>
   </tr>
   <tr>
     <td><img src="./IOT_Designs/equipment pictures/2024-12-19 10.50.26 PM.jpg" alt="Image 4" width="200"></td>
