@@ -92,16 +92,16 @@ The project targets a wide range of sectors with untapped potential, particularl
 
 <table>
   <tr>
-    <td><img src="./Assets/Lora_Repeater.png" alt="Image 1" width="400" height="300"></td>
-    <td><img src="./Assets/Lora_Transmitter.png" alt="Image 2" width="400" height="300"></td>
-  </tr>
-  <tr>
     <td><img src="./Assets/Landing.png" alt="Image 1" width="400" height="300"></td>
     <td><img src="./Assets/Dashboard.png" alt="Image 2" width="400" height="300"></td>
   </tr>
   <tr>
     <td><img src="./Assets/lora.jpg" alt="Image 1" width="400" height="300"></td>
     <td><img src="./Assets/Mesh.png" alt="Image 1" width="400" height="300"></td>
+  </tr>
+  <tr>
+    <td><img src="./Assets/Lora_Repeater.png" alt="Image 1" width="400" height="300"></td>
+    <td><img src="./Assets/Lora_Transmitter.png" alt="Image 2" width="400" height="300"></td>
   </tr>
 </table>
 
