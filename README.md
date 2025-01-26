@@ -17,12 +17,29 @@ The **Navikam** is designed for various applications, including wildlife monitor
 - **Frequency:** 433MHz ISM band
 - **Low Power Consumption:** Extended battery life for prolonged field deployment
 - **Long-Range Communication:** Up to 50 KM range
+- **Cost-Efficiency**: The entire system can be built for as low as NPR 15,000–20,000 or $150-$200 USD
 - **Cloud Integration:** Real-time data access and management via cloud platforms
 - **Repeater Functionality:** Extends the network range and coverage
 - **Robust Design:** Durable and weather-resistant for harsh environments
 - **Real-time GPS Tracking:** Accurate location data transmission
 - **Multi-use Cases:** Suitable for wildlife tracking, disaster rescue, security, asset, and transport management
 - **Mesh Network Implementation:** Intended to work in mesh network environment for long ranges
+
+---
+
+## **Technologies Used**  
+- **LoRa**: Long Range Radio technology for wireless communication.  
+- **IoT Integration**: For sensor-based tracking and real-time data updates.  
+- **Frontend Development**: Intuitive user interfaces for visualization and interaction.  
+- **Backend Development**: Robust systems for managing data and ensuring reliability.
+
+---
+
+## **Market Analysis**  
+The project targets a wide range of sectors with untapped potential, particularly:  
+- **Wildlife Monitoring**: Aligning with conservation laws to ensure sustainable practices.  
+- **Rescue Operations**: Offering reliable communication in disaster-hit regions.  
+- **Personal Security and Asset Tracking**: Providing security solutions where conventional systems fail.
 
 ---
 
