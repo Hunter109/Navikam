@@ -74,4 +74,4 @@ The **Navikam** is designed for various applications, including wildlife monitor
     <td><img src="./Assets/Dashboard.png" alt="Image 2" width="200"></td>
   </tr>
 </table>
----
+
