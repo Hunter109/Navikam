@@ -1,6 +1,6 @@
 # Navikam - 433MHz Frequency Development
 
-Welcome to the United Tech Club's Navikam project repository! This project focuses on developing a reliable and efficient GPS tracking system using LoRa technology at the 433MHz frequency. It is feasible in 868 MHZ frequency too which is unliscenced band allowed by nepal government to M2M or IOT Device Communication
+Welcome to the Navikam project repository! This project focuses on developing a reliable and efficient GPS tracking system using LoRa technology at the 433MHz frequency. It is feasible in 868 MHZ frequency too which is unliscenced band allowed by nepal government to M2M or IOT Device Communication
 
 ![Navikam Logo](src/static/assets/navikam_logo.png)
 
