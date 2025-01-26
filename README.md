@@ -87,7 +87,7 @@ The project targets a wide range of sectors with untapped potential, particularl
 - **Fault Tolerance**: If one node fails, the network can dynamically reroute data, ensuring consistent and reliable performance.  
 - The mesh network will pave the way for **real-time monitoring** in challenging environments, making the system more adaptable and robust.  
 
-<img src="./Assets/Lora_Repeater.png" alt="Image 1" width="400" height="300"></td>
+<img src="./Assets/Mesh.png" alt="Image 1" width="400" height="300"></td>
 ---
 ## Navikam Picture
 
@@ -99,9 +99,6 @@ The project targets a wide range of sectors with untapped potential, particularl
   <tr>
     <td><img src="./Assets/Landing.png" alt="Image 1" width="400" height="300"></td>
     <td><img src="./Assets/Dashboard.png" alt="Image 2" width="400" height="300"></td>
-  </tr>
-  <tr>
-    <td><img src="./Assets/Mesh.png" alt="Image 1" width="400" height="300"></td>
   </tr>
 </table>
 
