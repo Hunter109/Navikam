@@ -1,0 +1,3 @@
+This folder contains all the necessary diagrams used for this project.
+Schematic diagrams
+Flowcharts etc.
