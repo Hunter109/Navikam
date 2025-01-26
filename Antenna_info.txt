@@ -1,0 +1,9 @@
+Dipole Antenna  Design Calculations
+Example Frequency:
+If we have 433 MHZ
+F = C*W
+Where W = Wave Length
+      C = Speed of Light
+      F = Frequency of Wave
+Let l be the length of Antenna
+using  this formula we can calcuate the antenna design we require for the GPS Reciever
