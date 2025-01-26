@@ -66,8 +66,8 @@ The **Navikam** is designed for various applications, including wildlife monitor
 
 <table>
   <tr>
-    <td><img src="./Assets/1.jpg" alt="Image 1" width="200"></td>
-    <td><img src="./Assets/2.jpg" alt="Image 2" width="200"></td>
+    <td><img src="./Assets/Lora_Repeater.jpg" alt="Image 1" width="200"></td>
+    <td><img src="./Assets/Lora_Transmitter.jpg" alt="Image 2" width="200"></td>
     <td><img src="./Assets/3.jpg" alt="Image 3" width="200"></td>
   </tr>
   <tr>
